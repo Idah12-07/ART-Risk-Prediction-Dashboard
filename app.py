@@ -1,4 +1,7 @@
 # Paste your full Streamlit dashboard code hereimport streamlit as st
+import streamlit as st
+st.set_page_config(page_title="ART Risk Prediction", layout="centered")
+
 import pandas as pd
 import numpy as np
 import joblib
