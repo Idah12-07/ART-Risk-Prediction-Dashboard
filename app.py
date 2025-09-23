@@ -8,8 +8,7 @@ import plotly.graph_objects as go
 model = joblib.load('logistic_model.pkl')
 
 # Page config
-st.set_page_config(page_title="ART Risk Prediction", page_icon="🧬", layout="centered")
-
+st.set_page_config(page_title="ART Risk Prediction", layout="centered")
 # Header
 st.markdown("<h1 style='text-align: center; color: #4B8BBE;'>🧬 ART Risk Prediction Dashboard</h1>", unsafe_allow_html=True)
 st.markdown("""
