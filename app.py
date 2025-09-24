@@ -8,8 +8,7 @@ import joblib
 import plotly.graph_objects as go
 
 # Load trained model
-model = joblib.load('logistic_model.pkl')
-
+model = joblib.load('random_forest_model.pkl')
 # Page config
 st.set_page_config(page_title="ART Risk Prediction", layout="centered")
 # Header
@@ -57,7 +56,12 @@ if st.sidebar.button("🚀 Predict Suppression Status"):
     color = "#2ECC71" if prediction == 1 else "#E74C3C"
 
     st.markdown(f"<h3 style='color: {color};'>Prediction: {status}</h3>", unsafe_allow_html=True)
-    st.markdown(f"Confidence Score: **{confidence:.2f}**")
+   if confidence >= 0.85:
+    st.success(f"High confidence: {confidence:.2%}")
+elif confidence >= 0.60:
+    st.warning(f"Moderate confidence: {confidence:.2%}")
+else:
+    st.error(f"Low confidence: {confidence:.2%}")
 
     fig = go.Figure(go.Indicator(
         mode="gauge+number",
