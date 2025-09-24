@@ -55,15 +55,14 @@ if st.sidebar.button("🚀 Predict Suppression Status"):
     status = "🟢 Suppressed (Low Risk)" if prediction == 1 else "🔴 Unsuppressed (High Risk)"
     color = "#2ECC71" if prediction == 1 else "#E74C3C"
 
-    st.markdown(f"<h3 style='color: {color};'>Prediction: {status}</h3>", unsafe_allow_html=True)
-            if confidence >= 0.85:
+        st.markdown(f"<h3 style='color: {color};'>Prediction: {status}</h3>", unsafe_allow_html=True)
+
+    if confidence >= 0.85:
         st.success(f"High confidence: {confidence:.2%}")
     elif confidence >= 0.60:
         st.warning(f"Moderate confidence: {confidence:.2%}")
     else:
         st.error(f"Low confidence: {confidence:.2%}")
-
-
 
     fig = go.Figure(go.Indicator(
         mode="gauge+number",
